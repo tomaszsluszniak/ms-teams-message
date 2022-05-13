@@ -1,0 +1,20 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://faasd-gw:8080
+functions:
+  bps-on-demand-teams-connector:
+    lang: python3-http
+    handler: ./bps_on_demand_teams_connector
+    image: webconapps/bps-on-demand-teams-connector:latest
+    secrets:
+      - bpsod-az-client-id
+      - bpsod-teams-connector-login
+      - bpsod-teams-connector-password
+      - bpsod-teams-connector-sentry-dsn
+    environment:
+      write_debug: true
+      combine_output: false
+    build_args:
+      ADDITIONAL_PACKAGE: gcc musl-dev python3-dev libffi-dev openssl openssl-dev cargo make 
+      TEST_ENABLED: false
