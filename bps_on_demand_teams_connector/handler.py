@@ -93,6 +93,7 @@ def handle(event, context):
 
         send_message_body = {
             "body": {
+                "contentType": "html",
                 "content": message
             }
         }
