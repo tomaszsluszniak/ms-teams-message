@@ -3,15 +3,15 @@ provider:
   name: openfaas
   gateway: http://127.0.0.1:8080
 functions:
-  bps-on-demand-teams-connector:
+  ms-teams-message:
     lang: python3-http
-    handler: ./bps_on_demand_teams_connector
-    image: webconapps/bps-on-demand-teams-connector:latest
+    handler: ./ms_teams_message
+    image: tsluszniak/ms_teams_message:latest
     secrets:
-      - bpsod-az-client-id
-      - bpsod-teams-connector-login
-      - bpsod-teams-connector-password
-      - bpsod-teams-connector-sentry-dsn
+      - ms-teams-message-az-client-id
+      - ms-teams-message-upn
+      - ms-teams-message-password
+      - ms-teams-message-sentry-dsn
     environment:
       write_debug: true
       combine_output: false
